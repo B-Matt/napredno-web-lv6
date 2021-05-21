@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+
+    <form action="/projects" method="POST">
+        <b>Title:</b> <input type="text" name="title" placeholder="Project title" /><br><br>
+        <b>Description:</b> <input type="text" name="description" placeholder="Project description" /><br><br>
+        <b>Price:</b> <input type="number" name="price" placeholder="Project price" /><br><br>
+        <b>Done tasks:</b> <input type="number" name="doneTasks" placeholder="Number of done tasks" /><br><br>
+        <b>Start date:</b> <input type="date" name="startDate" placeholder="Start date" /><br><br>
+        <b>End date:</b> <input type="date" name="endDate" placeholder="End date" /><br><br>
+        <br><br>
+        <input type="submit" />
+    </form>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <a href="/projects/new">New project</a>
+
+    <ul>
+        <% projects.forEach(project => { %>
+            <li>
+                <div class="project-buttons">
+                    <form action="/projects/<%= project._id %>" method="POST" enctype="application/x-www-form-urlencoded">
+                        <input type="hidden" value="DELETE" name="_method" />
+                        <button type="submit">Delete</button>
+                    </form>
+                    <a href="/projects/edit/<%= project._id %>"><button>Edit</button></a>
+                    <a href="/projects/show/<%= project._id %>"><button>Show</button></a>
+                </div>
+
+                <h3><%= project.title %></h3>
+                <i><%= project.description %></i><br><br>
+                <b>Project price:</b> <%= project.price %>$<br>
+                <b>Done tasks: </b> <%= project.doneTasks %><br>
+                <b>Start date:</b> <%= project.startDate %><br>
+                <b>End date:</b> <%= project.endDate %>
+            </li>
+        <% }) %>
+    </ul>    
+  </body>
+</html>
