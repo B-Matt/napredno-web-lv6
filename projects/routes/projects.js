@@ -45,6 +45,12 @@ router.get('/new', (req, res) => {
     res.render('projects/new', { title: 'Add new project' });
 });
 
+// GET project show view
+router.get('/show/:id/', async (req, res) => {
+    const loadedProject = await project.findById(req.params.id);
+    res.render('projects/show', { title: 'Project', project: loadedProject });
+});
+
 // DELETE project based on _id
 router.delete('/:id/', async (req, res) => {
 

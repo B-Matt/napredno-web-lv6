@@ -6,16 +6,21 @@
   </head>
   <body>
     <h1><%= title %></h1>
+    <a href="/projects">Back</a>
 
-    <form action="/projects" method="POST">
-        <b>Title:</b> <input type="text" name="title" placeholder="Project title" /><br><br>
-        <b>Description:</b> <input type="text" name="description" placeholder="Project description" /><br><br>
-        <b>Price:</b> <input type="number" name="price" placeholder="Project price" /><br><br>
-        <b>Done tasks:</b> <input type="number" name="doneTasks" placeholder="Number of done tasks" /><br><br>
-        <b>Start date:</b> <input type="date" name="startDate" placeholder="Start date" /><br><br>
-        <b>End date:</b> <input type="date" name="endDate" placeholder="End date" /><br><br>
-        <br><br>
-        <input type="submit" />
-    </form>
+    <div class="project-buttons" style="width: 7em;">
+        <form action="/projects/<%= project._id %>" method="POST" enctype="application/x-www-form-urlencoded">
+            <input type="hidden" value="DELETE" name="_method" />
+            <button type="submit">Delete</button>
+        </form>
+        <a href="/projects/edit/<%= project._id %>"><button>Edit</button></a>
+    </div>
+
+    <h3><%= project.title %></h3>
+    <i><%= project.description %></i><br><br>
+    <b>Project price:</b> <%= project.price %>$<br>
+    <b>Done tasks: </b> <%= project.doneTasks %><br>
+    <b>Start date:</b> <%= project.startDate %><br>
+    <b>End date:</b> <%= project.endDate %>
   </body>
 </html>
