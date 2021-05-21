@@ -5,6 +5,7 @@ var projectSchema = new mongoose.Schema({
   description: String,
   price: Number,
   doneTasks: Number,
+  members: String,
   startDate: { type: Date, default: Date.now },
   endDate: { type: Date, default: Date.now },
 });

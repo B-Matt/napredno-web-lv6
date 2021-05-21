@@ -53,7 +53,6 @@ router.get('/show/:id/', async (req, res) => {
 
 // DELETE project based on _id
 router.delete('/:id/', async (req, res) => {
-
     const deletedProject = await project.findByIdAndRemove(req.params.id)
     console.log(`[DELETE] Done deleting project titled: ${deletedProject.title}!`);
     res.format({
@@ -70,9 +69,7 @@ router.get('/edit/:id/', async (req, res) => {
 
 // EDIT project based on _id
 router.put('/edit/:id/', async (req, res) => {
-    console.log(req.body);
     const editedProject = await project.findByIdAndUpdate(req.params.id, req.body);
-
     console.log(`[PUT] Done editign project titled: ${editedProject.title}!`);
     res.format({
         html: () => res.redirect('/projects'),
