@@ -8,16 +8,29 @@
     <h1><%= title %></h1>
 
     <form action="/projects/edit/<%= project._id %>" method="POST">
+      <% if(viewType == 1) { %>
         <b>Title:</b> <input type="text" name="title" placeholder="Project title" value="<%= project.title %>" /><br><br>
         <b>Description:</b> <input type="text" name="description" placeholder="Project description" value="<%= project.description %>" /><br><br>
         <b>Price:</b> <input type="number" name="price" placeholder="Project price" value="<%= project.price %>" /><br><br>
         <b>Done tasks:</b> <input type="number" name="doneTasks" placeholder="Number of done tasks" value="<%= project.doneTasks %>" /><br><br>
-        <b>Members:</b> <input type="string" name="members" placeholder="Project members" value="<%= project.members %>" /><br><br>
+        <b>Archived?:</b> <input type="checkbox" name="isArchived" <%= project.isArchived ? "checked" : "" %> /><br><br>
+        <b>Members:</b><br>
+        <select name="members" multiple>
+          <% for (var i = 0; i < users.length; i++){ %>
+              <option value="<%= users[i]._id %>" <%= selected[i] %>><%= users[i].mail %></option>
+          <% } %>
+        </select><br><br>
         <b>Start date:</b> <input type="date" name="startDate" placeholder="Start date" value="<%= project.startDate %>" /><br><br>
         <b>End date:</b> <input type="date" name="endDate" placeholder="End date" value="<%= project.endDate %>" /><br><br>
         <br><br>
         <input type="hidden" value="PUT" name="_method" />
         <input type="submit" />
+      <% } %>
+      <% if(viewType == 2) { %>
+        <b>Done tasks:</b> <input type="number" name="doneTasks" placeholder="Number of done tasks" value="<%= project.doneTasks %>" /><br><br>
+        <input type="hidden" value="PUT" name="_method" />
+        <input type="submit" />
+      <% } %>
     </form>
   </body>
 </html>

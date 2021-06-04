@@ -3,15 +3,26 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session');
 
 var db = require('./models/db');
-var lob = require('./models/projects');
+var proj = require('./models/projects');
+var user = require('./models/users');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var projectsRouter = require('./routes/projects');
 
 var app = express();
+app.use(session({
+  secret: 'secret-key',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    secure: false,
+    maxAge: 269999999999
+  },
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
